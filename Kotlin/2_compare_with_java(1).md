@@ -2,7 +2,7 @@
 
 ### 2.1 기본 자료형
 
-- 코틀린은 자바에서 사용하는 원시(primitive) 및 래퍼 타입을 코틀린 자료형으로 처리한다.
+- 코틀린은 자바에서 사용하는 원시(primitive) 및 래퍼 타입을 코틀린 자료형으로 처리한다.(int->Int , byte->Byte ...)
 
 - 코틀린은 컴파일 단계를 거치면서 원시 타입과 래퍼 타입 중 더 효율적인 타입으로 변환한다.
 
@@ -128,7 +128,7 @@
 
   ```kotlin
   //Kotlin의 추상클래스 선언 및 인스턴스 생성
-  abstrace class Foo{
+  abstract class Foo{
     abstract fun bar()
   }
   //추상클래스 인스턴스 생성은 object: [생성자]형태로 선언
@@ -303,7 +303,3 @@
   val fooValue = Foo.FOO
   Foo.foo
   ```
-
-  
-
- 
