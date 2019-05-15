@@ -40,3 +40,23 @@ ex) 엑셀을 사용해 연간 매출액을 계산하기 위해서는 월 매출
 
 
 
+#### 옵서버 패턴(Observer Pattern)
+
+옵서버 패턴은 객체의 상태 변화를 관찰하는 관찰자들, 즉 옵서버들의 목록을 객체에 등록하여 상태 변화가 있을 때마다 메서드 등을 통해 객체가 직접 목록의 각 옵서버에게 통지하도록 하는 디자인 패턴이다. 주로 분산 이벤트 핸들링 시스템을 구현하는데 사용되고, 구독/발행 모델로도 알려져 있다.
+
+![image-20190515182357977](/Users/danielkwak/Documents/TIL/TIL/RxJava/image-20190515182357977.png)
+
+옵서버 패턴의 핵심은 옵서버 또는 리스너라 불리는 하나 이상의 객체를 관찰 대상이 되는 객체에 등록시킨다.(registerObserver)
+
+그리고 각각의 옵저버들은 관찰 대상인 객체가 발생시키는 이벤트를 받아 처리한다. (notify) 위 그림의 UML에서 관찰 대상인 객체는 '이벤트를 발생시키는 주체' 라는 의미에서 Subject로 표시된고 있다. 
+
+이벤트가 발생하면 각 옵저버는 콜백을 받는다. Nofity 함수는 관찰 대상이 발행한 메세지 이외에, 옵서버 자신이 생성한 인자값을 전달할 수도 있다. 각 파생 옵서버는 notify함수를 구현함으로써 이벤트가 발생했을 때 처리할 각자의 동작을 정의해야 한다.
+
+
+
+#### 참고할만한 사이트
+
+- How to use RxJava https://github.com/ReactiveX/RxJava/blob/2.x/docs/How-To-Use-RxJava.md
+- RxAndroid https://github.com/ReactiveX/RxAndroid
+- Subscribe [http://reactivex.io/documentation/operators/subscribe.html](http://reactivex.io/documentation/operators/subscribe.html)
+
