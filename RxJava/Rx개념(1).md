@@ -52,11 +52,15 @@ ex) 엑셀을 사용해 연간 매출액을 계산하기 위해서는 월 매출
 
 이벤트가 발생하면 각 옵저버는 콜백을 받는다. Nofity 함수는 관찰 대상이 발행한 메세지 이외에, 옵서버 자신이 생성한 인자값을 전달할 수도 있다. 각 파생 옵서버는 notify함수를 구현함으로써 이벤트가 발생했을 때 처리할 각자의 동작을 정의해야 한다.
 
-
-
-#### 참고할만한 사이트
+#### 참고
 
 - How to use RxJava https://github.com/ReactiveX/RxJava/blob/2.x/docs/How-To-Use-RxJava.md
+
 - RxAndroid https://github.com/ReactiveX/RxAndroid
+
 - Subscribe [http://reactivex.io/documentation/operators/subscribe.html](http://reactivex.io/documentation/operators/subscribe.html)
+
+- RxJava 프로그래밍 [http://www.yes24.com/Product/Goods/45506284?scode=032&OzSrank=2](http://www.yes24.com/Product/Goods/45506284?scode=032&OzSrank=2)
+
+  
 
