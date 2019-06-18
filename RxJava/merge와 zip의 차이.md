@@ -1,6 +1,6 @@
-## map() 과 zip() 의 차이점
+## merge() 과 zip() 의 차이점
 
-큰 틀에서 보면 map()과 zip모두 RxJava의 결합연산자이다. 하지만 본질적인 차이가 있는데, map()은 source Observable들이 들어오는 순서대로 발행하여 내보내지만, zip()은 source Observables들이 모두 발행이 되어서 데이터들을 합친 후 내보낸다는 점이다. 따라서 merge()는 보통 source Observables들이 같은 행위(이벤트)를 할 때 묶는 용도로 많이 쓴다. zip()은 반드시 source Observables들이 발행된 데이터들을 가지고 있어야 한다는 특징이 있다.
+큰 틀에서 보면 merge()과 zip모두 RxJava의 결합연산자이다. 하지만 본질적인 차이가 있는데, merge()은 source Observable들이 들어오는 순서대로 발행하여 내보내지만, zip()은 source Observables들이 모두 발행이 되어서 데이터들을 합친 후 내보낸다는 점이다. 따라서 merge()는 보통 source Observables들이 같은 행위(이벤트)를 할 때 묶는 용도로 많이 쓴다. zip()은 반드시 source Observables들이 발행된 데이터들을 가지고 있어야 한다는 특징이 있다.
 
 ![image-20190607120128424](/Users/danielkwak/Library/Application Support/typora-user-images/image-20190607120128424.png)
 
