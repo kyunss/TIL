@@ -12,21 +12,21 @@ InnerClass의 한 종류로 이름이 없는 객체를 만들 수 있다. 익명
 
 ```java
 interface Age {
-int age = 29;
-void getAge();
+    int age = 29;
+    void getAge();
 }
 class MyClass implements Age {
 
-@Override
-public void getAge() {
-System.out.print("Age is "+age);
-}
+    @Override
+    public void getAge() {
+        System.out.print("Age is "+age);
+    }
 }
 class AnonymousDemo {
-public static void main(String [] args) {
-MyClass obj = new MyClass();
-obj.getAge();
-}
+    public static void main(String [] args) {
+        MyClass obj = new MyClass();
+        obj.getAge();
+    }
 }
 ```
 
@@ -36,15 +36,15 @@ Age 인터페이스는 age데이터와 getAge() 함수를 제공하고, MyClass�
 
 ```java
 class AnonymousDemo {
-public static void main(String[] args) {
-Age obj1 = new Age() {
-@Override
-public void getAge() {
-System.out.print("Age is " + age);
-}
-};
-obj1.getAge();
-}
+    public static void main(String[] args) {
+        Age obj1 = new Age() {
+            @Override
+            public void getAge() {
+                System.out.print("Age is " + age);
+            }
+        };
+        obj1.getAge();
+    }
 }
 ```
 
@@ -52,15 +52,15 @@ obj1.getAge();
 
 ```java
 class MyThread {
-public static void main(String[] arge) {
-Thread t = new Thread(new Runnable() {
-public void run() {
-System.out.println("Child Thread");
-}
-});
-t.start();
-System.out.println("Main Thread");
-}
+    public static void main(String[] arge) {
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+                System.out.println("Child Thread");
+            }
+        });
+        t.start();
+        System.out.println("Main Thread");
+    }
 }
 ```
 
