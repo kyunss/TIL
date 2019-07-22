@@ -1,0 +1,70 @@
+## 익명 클래스(Anonymous Class)
+
+### 정의
+
+InnerClass의 한 종류로 이름이 없는 객체를 만들 수 있다. 익명 클래스를 사용하는 가장 큰 목적은 부모 클래스를 상속받는 서브 클래스를 생성하지 않고도, **단일 객체**를 만들어서 부모 클래스에 정의된 동작에서 행위를 추가할 수 있다는 것이다.  익명 클래스는 그래픽 프로그래밍을 할 때 리스너 인터페이스를 만들 때 유용하다.  
+
+익명 클래스는 **클래스와 인터페이스로부터** 만들 수 있다. 
+
+### 예제
+
+#### 익명 클래스를 사용하지 않은 예제
+
+```java
+interface Age {
+int age = 29;
+void getAge();
+}
+class MyClass implements Age {
+
+@Override
+public void getAge() {
+System.out.print("Age is "+age);
+}
+}
+class AnonymousDemo {
+public static void main(String [] args) {
+MyClass obj = new MyClass();
+obj.getAge();
+}
+}
+```
+
+Age 인터페이스는 age데이터와 getAge() 함수를 제공하고, MyClass는 Age를 구현받아서 작성한다.
+
+사실 여기서 프로그램이 끝난다면, MyClass를 따로 분리하여작성할 필요가 없었을지도 모른다.  대신 아래와 같이 익명클래스로 단일 객체를 생성할 수 있다.
+
+```java
+class AnonymousDemo {
+public static void main(String[] args) {
+Age obj1 = new Age() {
+@Override
+public void getAge() {
+System.out.print("Age is " + age);
+}
+};
+obj1.getAge();
+}
+}
+```
+
+익명 클래스는 클래스나 인터페이스를 객체 없이 구현하거나, 생성자에 들어가는 객체도 익명 클래스로 구현할 수 있다. 흔하게 사용하는 Thread를 익명 클래스로 구현해보자.
+
+```java
+class MyThread {
+public static void main(String[] arge) {
+Thread t = new Thread(new Runnable() {
+public void run() {
+System.out.println("Child Thread");
+}
+});
+t.start();
+System.out.println("Main Thread");
+}
+}
+```
+
+#### 익명 클래스와 일반 클래스의 차이
+
+- 일반 클래스는 인터페이스를 제한 없이 상속받을 수 있지만,익명 클래스는 단 하나의 인터페이스/클래스만을 구현할 수있다.
+- 익명 클래스는 별도의 생성자를 작성할 수 없다. 만들어진 클래스의 생성자와 동일하게 객체를 생성할 뿐이다.
