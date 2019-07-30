@@ -133,3 +133,12 @@ class BurgerModule {
 	}
 	```
 
+
+
+### 액티비티를 객체 그래프에 추가하기
+
+- 필요한 객체를 자체적으로 생성하는 대신, 대거를 통해 생성된 객체를 주입 받으려면 액티비티 역시 객체 그래프에 추가해야 한다.
+- 특정 액티비티를 객체 그래프에 추가하려면 새로운 모듈을 생성한 후, 이 모듈에 객체 그래프에 추가할 액티비티를 정의하면 된다. 이 때 @ContributesAndroidInjector 어노테이션을 추가 선언한다. 
+- 컴포넌트에서는 앞서 작성했던 모듈과 더불어 대거의 안드로이드 지원 모듈인 AndroidSupportInjectionModule을 컴포넌트 모듈로 추가하며, AndroidSupportInjectionMoudle을 사용하기 위해 컴포넌트는 AndroidInjector 인터페이스를 상속한다. 
+- AndroidInjector 인터페이스의 타입 인자로 넣어줄때는 DaggerApplication을 상속받는 클래스를 넣어준다.
+- DaggerApplication을 상속하면 applicationInjector()함수를 구현해야 한다. 이를 구현하려면 작성한 컴포넌트의 구현체인 Dagger<컴포넌트> 를 사용해야 한다. 이는 대거가 생성해주는 클래스이므로 프로젝트를 한 번 빌드해주면 자동 생성이 된다. 
