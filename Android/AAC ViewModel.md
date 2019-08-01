@@ -8,10 +8,14 @@ ViewModel 클래스는 UI 관련 데이터를 고려한 방식으로 설계되�
 
 UI-Controller는 UI Data를 보여주고, 유저의 행위에 응답하고, 권한 확인과 같은 OS와 통신을 하는것이 주요한 작업들이다. 또한 데이터베이스나 네트워크로부터 데이터를 로드하는 작업 또한 요구되며, 클래스에 큰 부하가 될 것이다. 작업이 몰린 UI-Controller는 테스트도 쉽지 않다. UI-Controller의 과도한 책임은 결국 단일 클래스 **ViewModel**을 탄생하게 만들었다.
 
-AAC는 UI-Controller를 위해 ViewModel 클래스를 제공하며, UI를 위해 데이터를 준비하는 책임이 있다. ViewModel클래스는 **Configuration Changed가 발생해도 데이터를 자동으로 보존할 수 있으며** 다음 액티비티나 프래그먼트에서도 사용할 수 있게 된다.
+AAC는 UI-Controller를 위해 ViewModel 클래스를 제공하며, UI를 위해 데이터를 준비하는 책임이 있다. **ViewModel클래스는** **Configuration Changed가 발생해도 데이터를 자동으로 보존할 수 있으며** 다음 액티비티나 프래그먼트에서도 사용할 수 있게 된다.
 
-또한 액티비티가 re-created되더라도 **처음에 생성되었던 똑같은 ViewModel과 작용하게 된다.** Owner 액티비티가 소멸되면 안드로이드 프레임웤은 ViewModel의 onCleared() 메소드를 호출하여 리소스를 반환하도록 한다.(ViewModel클래스는 절대 view,lifeCycle,context를 참조하고 있는 클래스를 reference하지 않도록 한다. )
+또한 액티비티가 re-created되더라도 **처음에 생성되었던 똑같은 ViewModel과 작용하게 된다.** Owner 액티비티가 소멸되면 안드로이드 프레임웤은 **ViewModel의 onCleared() 메소드를 호출하여 리소스를 반환하도록 한다.**(ViewModel클래스는 절대 view,lifeCycle,context를 참조하고 있는 클래스를 reference하지 않도록 한다. )
 
-ViewModel은 뷰나 LifecyclerOwners의 특정 인스턴스보다 오래 지속되도록 설계되었다. 따라서 view나 lifecycleOwner와 상관없이 테스트가 더 용이하다. ViewModel은 Livedata같은 LifiecycleObserver를 포함할 수 있지만 Livedata와 같은 LifeCycle Observable 은 observe할 수 없다. 
+ViewModel은 뷰나 LifecyclerOwners의 특정 인스턴스보다 오래 지속되도록 설계되었다. 따라서 **view나 lifecycleOwner와 상관없이 테스트가 더 용이하다**. ViewModel은 Livedata같은 LifiecycleObserver를 포함할 수 있지만 Livedata와 같은 LifeCycle Observable 은 observe할 수 없다. 
 
 만약 ViewModel이 Context가 필요하다면 AndroidViewModel을 extends할 수 있으며 생성자로 Application을 받게 된다.
+
+
+
+> 출처: 안드로이드 ViewModel 공식 문서 번역
