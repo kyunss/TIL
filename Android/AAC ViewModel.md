@@ -18,4 +18,5 @@ ViewModel은 뷰나 LifecyclerOwners의 특정 인스턴스보다 오래 지속�
 
 
 
+
 > 출처: 안드로이드 ViewModel 공식 문서 번역
