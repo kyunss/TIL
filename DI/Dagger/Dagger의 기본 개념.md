@@ -53,11 +53,11 @@ class BurgerModule {
 
 - 하나의 컴포넌트는 **여러 개의 모듈**을 조합할 수 있다.
 
-- 목적에 따라 분리된 여러 모듈로부터 필요한 객체를 받아 사용할 수 있다.
+- 목적에 따라 **분리된 여러 모듈로부터 필요한 객체를 받아 사용할 수 있다.**
 
 - **@Component** 어노테이션을 붙인 **인터페이스** 로 선언하며, **@Component** 어노테이션의 **modules** **프로퍼티**를 통해 컴포넌트에 객체를 제공하는 모듈을 지정할 수 있다.
 
-- 컴포넌트를 통해 **객체를 주입받을 대상은 함수의 파라미터로 선언하며, 아무런 값을 반환하지 않는다.** 
+- 컴포넌트를 통해 **객체를 주입받을 대상은 함수의 파라미터로 선언하며, 값을 반환하지 않는다.** 
 
 	```kotlin
 	@Component(modules = arrayOf(BurgerModule::class))
@@ -98,7 +98,7 @@ class BurgerModule {
 
 - 컴포넌트 빌더 인터페이스는 **@Component.Builder** 로 표시하며 생성할 컴포넌트를 반환하는 **builder()** 함수를 반드시 포함해야 한다.
 
-- 컴포넌트에 추가로 전달할 객체를 지정하려면, 해당 객체를 인자로 받고->빌더 클래스를 반환하는 함수를 정의한 후-> 해당 함수에 **@BindsInstance 어노테이션**을 추가해야 한다. 
+- 컴포넌트에 추가로 전달할 객체를 지정하려면, 해당 객체를 인자로 받고 -> 빌더 클래스를 반환하는 함수를 정의한 후 -> 해당 함수에 **@BindsInstance 어노테이션**을 추가해야 한다. 
 
 	```kotlin
 	@Component(modules = arrayOf(BurgerModule::class))
@@ -137,8 +137,8 @@ class BurgerModule {
 
 ### 액티비티를 객체 그래프에 추가하기
 
-- 필요한 객체를 자체적으로 생성하는 대신, 대거를 통해 생성된 객체를 주입 받으려면 액티비티 역시 객체 그래프에 추가해야 한다.
-- 특정 액티비티를 객체 그래프에 추가하려면 새로운 모듈을 생성한 후, 이 모듈에 객체 그래프에 추가할 액티비티를 정의하면 된다. 이 때 @ContributesAndroidInjector 어노테이션을 추가 선언한다. 
-- 컴포넌트에서는 앞서 작성했던 모듈과 더불어 대거의 안드로이드 지원 모듈인 AndroidSupportInjectionModule을 컴포넌트 모듈로 추가하며, AndroidSupportInjectionMoudle을 사용하기 위해 컴포넌트는 AndroidInjector 인터페이스를 상속한다. 
-- AndroidInjector 인터페이스의 타입 인자로 넣어줄때는 DaggerApplication을 상속받는 클래스를 넣어준다.
-- DaggerApplication을 상속하면 applicationInjector()함수를 구현해야 한다. 이를 구현하려면 작성한 컴포넌트의 구현체인 Dagger<컴포넌트> 를 사용해야 한다. 이는 대거가 생성해주는 클래스이므로 프로젝트를 한 번 빌드해주면 자동 생성이 된다. 
+- 필요한 객체를 자체적으로 생성하는 대신, **대거를 통해 생성된 객체를 주입 받으려면 액티비티 역시 객체 그래프에 추가해야 한다.**
+- 특정 액티비티를 객체 그래프에 추가하려면 새로운 모듈을 생성한 후, 이 모듈에 객체 그래프에 추가할 액티비티를 정의하면 된다. 이 때 **@ContributesAndroidInjector 어노테이션**을 추가 선언한다. 
+- 컴포넌트에서는 앞서 작성했던 모듈과 더불어 대거의 안드로이드 지원 모듈인 **AndroidSupportInjectionModule**을 컴포넌트 모듈로 추가하며, AndroidSupportInjectionMoudle을 사용하기 위해 컴포넌트는 **AndroidInjector 인터페이스를 상속한다.** 
+- AndroidInjector 인터페이스의 타입 인자로 넣어줄때는 **DaggerApplication을 상속받는 클래스**를 넣어준다.
+- DaggerApplication을 상속하면 **applicationInjector() 함수**를 구현해야 한다. 이를 구현하려면 작성한 컴포넌트의 구현체인 Dagger<컴포넌트> 를 사용해야 한다. 이는 대거가 생성해주는 클래스이므로 프로젝트를 한 번 빌드해주면 자동 생성이 된다. 
