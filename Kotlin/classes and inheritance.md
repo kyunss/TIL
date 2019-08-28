@@ -16,7 +16,7 @@ class Empty
 
 ### Constructor
 
-- 코틀린은 주 생성자(primary constructor)를 가질 수 있고, 하나 이상의 보조 생성자(secondary constructor)을 가진다. 주 생성자는 Class의 헤더에 속하고, 클래스 명 다음에 쓴다.(optional parameter와 함께)
+- 코틀린은 주 생성자(primary constructor)가 있고, 하나 이상의 보조 생성자(secondary constructor)을 가질 수 있다. 주 생성자는 Class의 헤더에 속하고, 클래스 명 다음에 쓴다.(optional한 parameter와 함께)
 - **Visibility Modifiers ** 를 위해 private을 붙이는 경우가 아니면 `constructor` 키워드는 생략할 수 있다. (생성자는 기본적으로 public이다.)
 
 ```kotlin
@@ -24,7 +24,7 @@ class Person constructor(name: String) {/**/}
 class Person (name: String) {/**/}
 ```
 
-- 주 생성자에는 어떠한 코드블럭도 들어갈 수 없으며, 초기화에 관한 코드는 `init` 에서 초기화 할 수 있다. 
+- 주 생성자에는 어떠한 코드블럭도 들어갈 수 없으며, 초기화에 관한 코드는 `init` 에서 작성한다.
 - 인스턴스 초기화 중에, `init` 블록은 어디에든 끼여 들어갈 수 있으며 인스턴스와 함께 선언된 순서로 실행된다. 
 
 ```kotlin
@@ -100,7 +100,7 @@ constructor
  */
 ```
 
-- 비-추상 클래스가 주 생성자와 보조 생성자 둘 다 없다면, 명시적으로 빈 생성자가 만들어진다. 기본적으로 public으로 만들어지게 되는데, 생성자를 private으로 만들고 싶으면 비어있는 생성자에 private을 붙이면 된다. 
+- 비-추상 클래스(그냥 일반 클래스)가 주 생성자와 보조 생성자 둘 다 없다면, 암묵적으로 빈 생성자가 만들어진다. 기본적으로 public으로 만들어지게 되는데, 생성자를 private으로 만들고 싶으면 비어있는 생성자에 private을 붙이면 된다. 
 
 ```kotlin
 class Person private constructor() { /**/ }
