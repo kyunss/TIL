@@ -112,3 +112,52 @@ class Person private constructor() { /**/ }
 class Customer(val customerName: String = "")
 ```
 
+
+
+## Inheritance
+
+- 모든 코틀린 클래스는 `Any` 라는 슈퍼 클래스를 선언 없이 디폴트로 상속 받는다. 
+- `Any` 는 `equals()`, `hashCode()`, `toString()` 을 가지고 있다. 따라서 모든 클래스는 override할 수 있다.
+- 자식 클래스가 만약 주 생성자가 있다면, 자식 클래스의 생성자를 이용하여 부모 클래스를 선언과 동시에 초기화 해야 한다.
+
+```kotlin
+open class Base(p: Int)
+
+class Derived(p: Int): Base(p)
+```
+
+- 자식 클래스가 만약 주 생성자 없이 보조 생성자(들)만 있다면, `super` 키워드를 사용하여 부모 타입을 같이 초기화 해야 한다. 혹은 같은 역할을 하는 다른 생성자에게 위임을 할 수도 있다.
+
+```kotlin
+class CustomView : View {
+    constructor(context: Context) : super(context)
+
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+}
+```
+
+- 자식 클래스가 생성자가 없어도 부모 클래스를 상속받는 순간 초기화를 같이 해야 한다.
+
+### Overriding a method
+
+- 코틀린은 명시적으로 표현하는 언어이다. 따라서 override가 가능한 함수들은 명시적으로 `open` 으로 명시해야 하고, `override` 또한 마찬가지이다.
+
+```kotlin
+open class Shape {
+    open fun draw() { /*..*/ }
+    fun fill() {/*..*/}
+}
+
+class Circle : Shape() {
+    override fun draw() {
+
+    }
+}
+```
+
+- 위 코드에서 `open` 이 붙지 않은 fill() 메소드를 자식 클래스에서 똑같이 만들 수 없다.( `override` 를 붙이든 안붙이든)
+
+- `override` 로 명시된 함수는 해당 클래스를 상속한 하위 클래스에서 오버라이딩이 가능하므로, 이를 막고싶다면 `final` 을 붙인다.
+
+### Overriding Properties
+
