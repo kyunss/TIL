@@ -176,4 +176,17 @@ class Rectangle : Shape() {
 }
 ```
 
-- 
+- `val` property 를 `var` 로 override하는것은 가능하지만 그 반대는 허용되지 않는다. 이유는 `val` 프로퍼티는 본질적으로 get() 메소드에 의해 초기화가 되며, `var` 는 추가로 set도 가능하기 때문이다.
+
+```kotlin
+interface Shape {
+    val vertexCount: Int
+}
+
+class Rectangle(override val vertexCount: Int = 4) : Shape
+
+class Polygon : Shape {
+    override val vertexCount: Int = 5
+}
+```
+
