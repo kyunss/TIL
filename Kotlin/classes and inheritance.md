@@ -156,8 +156,24 @@ class Circle : Shape() {
 ```
 
 - 위 코드에서 `open` 이 붙지 않은 fill() 메소드를 자식 클래스에서 똑같이 만들 수 없다.( `override` 를 붙이든 안붙이든)
-
 - `override` 로 명시된 함수는 해당 클래스를 상속한 하위 클래스에서 오버라이딩이 가능하므로, 이를 막고싶다면 `final` 을 붙인다.
 
 ### Overriding Properties
 
+- overriding property 역시 overriding method 와 비슷하게 사용한다.
+
+```kotlin
+open class Shape {
+    open val vertexCount: Int = 0
+}
+
+class Rectangle : Shape() {
+    /** 두가지 초기화 방법 모두 가능 **/
+    override val vertexCount: Int
+        get() = super.vertexCount
+
+    override val vertexCount: Int = 4
+}
+```
+
+- 
