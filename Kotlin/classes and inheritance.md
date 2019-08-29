@@ -12,8 +12,6 @@ class Invoice { /*..*/ }
 class Empty
 ```
 
-
-
 ### Constructor
 
 - 코틀린은 주 생성자(primary constructor)가 있고, 하나 이상의 보조 생성자(secondary constructor)을 가질 수 있다. 주 생성자는 Class의 헤더에 속하고, 클래스 명 다음에 쓴다.(optional한 parameter와 함께)
@@ -65,8 +63,6 @@ class Person(val name: String, val age:Int, var address: String) {/*.../*/}
 ```
 
 - 만약 주 생성자가 Visibility Modifiers를 붙일 경우 constructor 키워드를 앞에 써주면 되고, constructor 키워드는 생략할 수 없다.
-
-
 
 ### Secondary Constructor
 
@@ -183,10 +179,103 @@ interface Shape {
     val vertexCount: Int
 }
 
-class Rectangle(override val vertexCount: Int = 4) : Shape
+class Rectangle(override val vertexCount: Int = 4) : Shape //Always has 4 value
 
 class Polygon : Shape {
-    override val vertexCount: Int = 5
+    override val vertexCount: Int = 5 //can be set to any number later
 }
 ```
 
+### Derived class Initialization order
+
+- 자식 클래스의 객체를 생성하는 동안, 자식 클래스의 초기화 로직이 실행되기 전에 부모 클래스의 초기화가 가장 먼저 진행된다.
+
+```kotlin
+open class Base(val name: String) {
+
+    init {
+        println("Initializing Base")
+    }
+
+    open val size: Int =
+            name.length.also { println("Initializing size in Base: $it") }
+}
+
+class Derived(
+        name: String,
+        val lastName: String
+) : Base(name.capitalize().also { println("Argument for Base: $it") }) {
+
+    init {
+        println("Initializing Derived")
+    }
+
+    override val size: Int = (super.size + lastName.length).also { println("Initializing size in Derived: $it") }
+}
+
+fun main() {
+    val d = Derived("hello", "word")
+}
+
+/*
+Argument For Base: hello
+Initialize Base
+Initializing size in Base: 5
+Initializing Derived
+Initializing size in Derived: 9
+ */
+```
+
+- 위 코드의 실행결과를 보면, 자식 클래스의 overrided된 프로퍼티는 부모 클래스의 생성자가 실행되기 전까지는 초기화 되지 않음을 알 수 있다.
+- (확실친 않은데)재정의가 가능한, 다시 말해서 `open` 이 붙은 프로퍼티는 부모 클래스의 생성자나, `init` 블록이나 프로퍼티 초기화 블록에서는 사용하지 않도록 한다
+
+### Calling the superclass implementation
+
+- (자바와 마찬가지로) 자식 클래스는 `super` 키워드를 사용하여 부모 클래스의 프로퍼티나 함수를 호출할 수 있다.
+
+```kotlin
+open class Rectangle {
+    open fun draw() { println("Drawing a rectangle") }
+    open val borderColor: String get() = "black"
+}
+
+class FilledRectagnle : Rectangle() {
+    override fun draw() {
+        super.draw()
+        println("Filled the Rectangle")
+    }
+    
+    val fillColor: String get() = super.borderColor
+}
+```
+
+### Overriding rules
+
+- 코틀린에서 상속을 구현할 때는 다음의 규칙을 따른다. 
+	- 만약 똑같은 멤버를 가진 클래스(인터페이스)들을 여러개를 상속할 경우, 각 상속된 클래스들을 모두 구현해야 한다.
+	- 어떤 타입을 상속받았는지 명시하기 위해 꺽쇠괄호 안에 타입을 명시한다.(`super<Base>` )
+
+
+
+## Absrtact classes
+
+- 클래스 혹은 클래스의 멤버들은 `abstrac` 키워드를 가질 수 있으며 클래스 안에서 구현체를 가지지 않는다.
+
+- 추상 클래스도 Non-abstract open 클래스를 상속받아서 override할 수 있다.
+
+```kotlin
+open class Polygon {
+    open fun draw() {}
+}
+
+abstract class Rectangle : Polygon() {
+    override abstract fun draw()
+}
+```
+
+
+
+## Companion object
+
+- 객체 생성 없이 클래스 내부에 접근할 수 있는 함수를 작성할때(팩토리 메서드 같은) `object` 키워드의 멤버로 선언할 수 있다.
+- 더 나아가서, 클래스 이름만으로(객체 생성 없이) 접근하고 싶은 함수를 만들고자 한다면 `companion object`멤버로 사용하여 만들 수 있다.
