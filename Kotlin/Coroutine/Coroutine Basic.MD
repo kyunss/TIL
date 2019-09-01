@@ -2,15 +2,18 @@
 
 ### Definition(Wiki)
 
-> Coroutine은 프로그램의 실행이 중지 되었다가 재개됨에 따라서 비선점형 멀티 태스킹을위한 subroutines들을 일반화 하는 프로그램의 구성 요소이다. 
+> Coroutine은 프로그램의 실행이 중지 되었다가 재개됨에 따라서 비선점형 멀티 태스킹을위한 subroutines들을 일반화하는 프로그램의 구성 요소이다. 
 >
 > Coroutine은 cooperative task, exeption, infinity list 등의 작업을 하는데 적합하다.
 
 
 
-### Comparison With Thread(Wiki)
+### Comparison With Thread(Wik)
 
-
+- 코루틴과 쓰레드는 매우 유사하지만, 코루틴은 **Cooperative Multitasked** 이고, 쓰레드는 **Preemptive Multitasked** 방식이다. 
+- 다시 말해, 코루틴은 **concurrency** 는 제공하지만, **parallism** 은 아니다. 
+	- 동시성:
+	- 병렬성:
 
 
 
