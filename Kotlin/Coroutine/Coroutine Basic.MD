@@ -39,10 +39,14 @@
 ### Coroutine Basic
 
 - 코틀인은 표준 라이브러리를 통해 최소한의 저수준 API를 제공하며, 다양한 라이브러리를 통해 Coroutine을 유용하게 사용할 수 있다.
+
 - 비슷한 기능을 가진 많은 다른 언어들과는 달리, `async` 나 `await` 는 코틀린의 키워드가 아니며, 표준 라이브러리에도 들어있지 않다.
-- 더욱이, 코틀린의 `suspend function` 은 
 
+- 더욱이, 코틀린의 `suspend function` 의 기본 개념은 `promise` 나 `future` 에 비해 더 안전하고 에러가 나지 않는 추상화를 제공한다.
 
+- Kotlinx.coroutins는 Jetbrain에서 개발한 코루틴을 위한 풍부한 라이브러리이며, `launch` 나 `async` 같은 개념이 포함된다.
+
+	
 
 ### Reference
 
