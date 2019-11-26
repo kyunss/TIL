@@ -1,6 +1,6 @@
 ## View와 ViewGroup
 
-![image-20191127010726805](/Users/daniel/Documents/TIL/TIL/Kotlin/image-20191127010726805.png)
+![image-20191127013233166](/Users/daniel/Documents/TIL/TIL/Android/image-20191127013233166.png)
 
 - ViewGroup은 다른 View를 포함할 수 있는 특별한 View이다. (View를 상속하고 있음) 따라서 ConstraintLayout, LinearLayout 같은 레이아웃이나 ViewContainer의 기본 클래스가 된다. 
 - ViewGroup은 ViewGroup.LayoutParams 에서 레이아웃의 속성들을 정의할 수 있음.
