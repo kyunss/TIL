@@ -1,0 +1,9 @@
+- sealed interface
+  - 코틀린 1.1 이전에는 sealed class의 sub class를 반드시 중괄호를 열어 정의를 해야함.
+  - 1.1 이후부터는 같은 파일 내에서는 선언이 가능하도록 변경
+  - 코틀린 1.5 부터는 파일이 달라도 같은 모듈 내에서라면 선언할 수 있도록 좀 더 유연해짐
+    - 이는 거대한 sealed class의 sub class 들을 분리할 수 있다는 장점이 생김
+- 그럼 왜 sealed interface는 왜 나왔을까?
+  - 기존에 코틀린에서 sealed interface 막았던 이유는 자바 클래스에서 인터페이스를 구현할 때 sealed interface와 겹칠 경우, sealed class의 특징인 exhaustiveness를 보장할 수 없기 때문
+  - 코틀린과 자바에서는 하나의 클래스가 여러 interface를 상속 받을 수 있지만, 다중 상속은 되지 않으므로 sealed 다중 상속을 구현하기 위해서 sealed interface가 나오게 됨
+- https://jorgecastillo.dev/sealed-interfaces-kotlin 예제 참고
